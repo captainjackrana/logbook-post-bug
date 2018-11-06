@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Logbook Example</title>
+    <headline>Enter value to post</headline>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+    th {
+    display: table-cell;
+    vertical-align: inherit;
+    font-weight: bold;
+    text-align: center;
+    border-collapse: collapse;
+    }
+    table, th, td {
+       border: 1px solid black;
+    }
+</style>
+</head>
+
+<body>
+
+<div th:if="${message}">
+    <h2 th:text="${message}"/>
+</div>
+<div>
+    <form method="POST" enctype="application/x-www-form-urlencoded" action="/">
+        <input type ="text" name="query" autofocus />
+        <input type="submit" value="Search" />
+        <br />
+    </form>
+    <table>
+        <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Headline</th>
+        <th>Phone No</th>
+        </thead>
+        <tr th:each="emp : ${employees}">
+            <td th:text="${emp.name}"></td>
+            <td th:text="${emp.email}"></td>
+            <td th:text="${emp.headline}"></td>
+            <td th:text="${emp.phoneNo}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
